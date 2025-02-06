@@ -19,9 +19,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	}
 	return (dst);
 }
-int ft_error(){
+int ft_error(void){
 	write(1, "Error", 5);
 	write(1, "\n", 1);
-
 	return 1;
 }
