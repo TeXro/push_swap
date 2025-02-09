@@ -56,20 +56,6 @@ static int	intlen(const char *s, char c)
 	return (len);
 }
 
-// static void	*free_int(int *arr, int size)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (i < size)
-// 	{
-// 		free(arr[i]);
-// 		i++;
-// 	}
-// 	free(arr);
-// 	return (NULL);
-// }
-
 static int	allocint(const char *s, int len)
 {
 	int	word;
@@ -140,52 +126,66 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-int repeat(char **arg)
+int repeat(char **argv)
 {
-	int i;
-	int c;
-	int st;
-	i = 0;
-	while (arg[i])
+	int i = 0;
+	int p = 0;
+	int c = 0;
+	int b = 0;
+	int z = 0;
+
+	while (argv[i])
 	{
+		p = i + 1;
+		b = 0;
 		c = 0;
-		if (ft_strchr(arg[i], ' '))
+		//			i      p    
+		//         [0]    [1]          [2] [3] [4] [5] [6]
+		// 			12     "33  5 12 6 "
+
+		// 		   --b------------c------------
+		// 		    012    012 0 0 0
+		
+		while (argv[p])
 		{
-			printf("-->space=:%s:\n", arg[i]);
-			while (arg[i][c])
+			if (argv[i][b] != argv[p][c])
 			{
-				printf("{");
-				if (arg[i][c] == ' ')
-				{	
-					// "123X77X88"
-					// 	0123
-					//  
-					st =+ c;
-					printf("(st=%d)(c=%d)\n", st, c);
-					// while (condition)
-					// {
-					// 	printf("%c", arg[i][c - st]);
-					// 	c++;
-					// }
-					
+				if (ft_strchr(argv[i], ' ') && argv[i][b])
+				{
+					while ((argv[i][b]) != ' ' && argv[i][b])
+						b++;
+					while ((argv[i][b]) == ' ' && argv[i][b])
+						b++;
+					c = 0;
+					continue;
 				}
-				
-				printf("}");
-				c++;
+				if (ft_strchr(argv[p] + c, ' '))
+				{
+					while ((argv[p][c]) != ' ')
+						c++;
+					while ((argv[p][c]) == ' ')
+						c++;
+					b = 0;
+					continue;
+				}
+				p++;
+				c = 0;
+				b = 0;	
+				continue;
 			}
-			
-		}
-		c = i + 1;
-		while (arg[c])
-		{
-			// ./push_swap 34 5 6 "2 5" 754
-			if (ft_atoi(arg[i]) == ft_atoi(arg[c]))
-				return 1;
-			c++;
+			if (argv[i][b] == argv[p][c] && (argv[i][b] && argv[p][c]))
+			{
+				c++;
+				b++;
+				if (((!argv[i][b] || argv[i][b] == ' ')  && (!argv[p][c] || argv[p][c] == ' ')))
+					return 1;
+				continue;
+			}
 		}
 		i++;
 	}
 	return 0;
+
 }
 int is_valid(char **arg)
 {
@@ -215,8 +215,6 @@ int check_arg(char **arg)
 {	
 	if (is_valid(arg) == 1)
 		return 1;
-	if (repeat(arg) == 1)
-		return 1;
 	return 0;
 }
 
@@ -236,14 +234,8 @@ int handle_arg(char **arg, s_list **stack)
 			new_node(stack, sp_arg[a]);
 			a++;
 		}
-		// free(sp_arg);
 		i++;
 	}
-	// while (a)
-	// {
-	// 	free(ar)
-	// }
-	
 	return 0;
 }
 
@@ -252,12 +244,13 @@ int main(int argc, char **argv)
 	int a = 1;
 	s_list *stacka = NULL;
 
+	if (repeat(argv + 1) == 1)
+		return ft_error();
 	if (check_arg(argv + 1) == 1)
 		return ft_error();
 	if (argc == 1)
 		return ft_error();
 	handle_arg(argv + 1, &stacka);
-
 	s_list *currenta = stacka;
 	printf("<stackA>\n");
     while (currenta)
