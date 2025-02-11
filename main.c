@@ -25,6 +25,7 @@ void new_node(s_list **stack, int num)
 		tmp = tmp->next;
 	tmp->next = node;
 }
+
 static int	count_int(const char *s, char c)
 {
 	int		count;
@@ -91,132 +92,15 @@ int	*ft_int_split(char const *s, char c)
 		while (*s == c)
 			s++;
 		result[i] = allocint(s, intlen(s, c));
-		// if (!result[i])
-		// 	return (free_int(result, i));
 		s += intlen(s, c);
 		i++;
 	}
-	// result[i] = NULL;
 	return (result);
 }
 
-size_t ft_strlen(char *s)
-{
-	size_t len;
 
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
-}
 
-char	*ft_strchr(const char *s, int c)
-{
-	int	i;
 
-	i = 0;
-	if ((char)c == '\0')
-		return ((char *)s + ft_strlen(s));
-	while (s[i] != '\0')
-	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		i++;
-	}
-	return (NULL);
-}
-
-int repeat(char **argv)
-{
-	int i = 0;
-	int p = 0;
-	int c = 0;
-	int b = 0;
-	int z = 0;
-
-	while (argv[i])
-	{
-		p = i + 1;
-		b = 0;
-		c = 0;
-		//			i      p    
-		//         [0]    [1]          [2] [3] [4] [5] [6]
-		// 			12     "33  5 12 6 "
-
-		// 		   --b------------c------------
-		// 		    012    012 0 0 0
-		
-		while (argv[p])
-		{
-			if (argv[i][b] != argv[p][c])
-			{
-				if (ft_strchr(argv[i], ' ') && argv[i][b])
-				{
-					while ((argv[i][b]) != ' ' && argv[i][b])
-						b++;
-					while ((argv[i][b]) == ' ' && argv[i][b])
-						b++;
-					c = 0;
-					continue;
-				}
-				if (ft_strchr(argv[p] + c, ' '))
-				{
-					while ((argv[p][c]) != ' ')
-						c++;
-					while ((argv[p][c]) == ' ')
-						c++;
-					b = 0;
-					continue;
-				}
-				p++;
-				c = 0;
-				b = 0;	
-				continue;
-			}
-			if (argv[i][b] == argv[p][c] && (argv[i][b] && argv[p][c]))
-			{
-				c++;
-				b++;
-				if (((!argv[i][b] || argv[i][b] == ' ')  && (!argv[p][c] || argv[p][c] == ' ')))
-					return 1;
-				continue;
-			}
-		}
-		i++;
-	}
-	return 0;
-
-}
-int is_valid(char **arg)
-{
-	int	i;
-	int	c;
-
-	i = 0;
-	while (arg[i])
-	{
-		c = 0;
-		while (arg[i][c])
-		{
-			if (arg[i][c + 1] == '+' || arg[i][c + 1] == '-') 
-				return 1;
-			if ((arg[i][c] != '+') && (arg[i][c] != '-')){
-				if((arg[i][c] < '0' || arg[i][c] > '9') && (arg[i][c] != ' '))
-					return 1;
-			}
-			c++;
-		}
-		i++;
-	}
-	return 0;
-}
-
-int check_arg(char **arg)
-{	
-	if (is_valid(arg) == 1)
-		return 1;
-	return 0;
-}
 
 int handle_arg(char **arg, s_list **stack)
 {
