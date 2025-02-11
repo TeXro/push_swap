@@ -6,39 +6,11 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 18:58:15 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/11 19:11:22 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/11 22:29:21 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-
-
-size_t ft_strlen(const char *s)
-{
-	size_t len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	int	i;
-
-	i = 0;
-	if ((char)c == '\0')
-		return ((char *)s + ft_strlen(s));
-	while (s[i] != '\0')
-	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		i++;
-	}
-	return (NULL);
-}
 
 int rp_string(char *arg)
 {
@@ -49,10 +21,6 @@ int rp_string(char *arg)
 	{
 		printf("(c%d)\n", c);
 		b = c + 1;
-		// while (arg[b] != ' ')
-		// 	b++;
-		// while (arg[b] == ' ')
-		// 	b++;
 		while (arg[b])
 		{
 			if (arg[c] != arg[b])
@@ -92,9 +60,6 @@ int repeat(char **argv)
 
 	while (argv[i])
 	{
-		// if (ft_strchr(argv[i], ' '))
-		// 	if (rp_string(argv[i]) == 1)
-		// 		return 1;
 		p = i + 1;
 		b = 0;
 		c = 0;

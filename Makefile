@@ -1,11 +1,11 @@
 CC = cc
-SRC = utils.c ft_split.c ft_atoi.c check.c
+SRC = utils.c ft_int_split.c check.c
 OBJ = ${SRC:.c=.o}
 CFLAGS =
 NAME = push_swap.a
 
 all : $(NAME)
-	cc main.c $(NAME) -o push_swap && rm -f $(OBJ)
+	cc main.c $(NAME) -o push_swap && rm -f $(OBJ) $(NAME)
 
 re : fclean all
 

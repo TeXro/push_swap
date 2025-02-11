@@ -1,26 +1,46 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/11 22:21:16 by zzin              #+#    #+#             */
+/*   Updated: 2025/02/11 22:33:38 by zzin             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+size_t	ft_strlen(const char *s)
 {
-	char		*d;
-	const char	*s;
-	size_t		i;
+	size_t	len;
 
-	s = (const char *)src;
-	d = (char *)dst;
-	if (!s && !d)
-		return (NULL);
+	len = 0;
+	while (s[len])
+		len++;
+	return (len);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	int	i;
+
 	i = 0;
-	while (i < n)
+	if ((char)c == '\0')
+		return ((char *)s + ft_strlen(s));
+	while (s[i] != '\0')
 	{
-		d[i] = s[i];
+		if (s[i] == (char)c)
+			return ((char *)s + i);
 		i++;
 	}
-	return (dst);
+	return (NULL);
 }
-int ft_error(void){
-	write(1, "Error", 5);
-	write(1, "\n", 1);
-	return 1;
+
+int	ft_error(void)
+{
+	write(2, "Error", 5);
+	write(2, "\n", 1);
+	return (1);
 }
