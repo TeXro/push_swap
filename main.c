@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 22:34:05 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/11 22:47:41 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/12 16:23:49 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	handle_arg(char **arg, t_list **stack)
 	i = 0;
 	while (arg[i])
 	{
-		sp_arg = ft_int_split(arg[i], ' ');
+		sp_arg = ft_int_split(arg[i]);
 		a = 0;
 		while (sp_arg[a])
 		{

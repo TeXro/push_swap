@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 10:27:14 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/11 22:37:15 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/12 16:23:20 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct t_list
 }	t_list;
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
-int		*ft_int_split(char const *s, char c);
+int		*ft_int_split(char const *s);
 int		ft_error(void);
 int		rp_string(char *arg);
 int		repeat(char **argv);
