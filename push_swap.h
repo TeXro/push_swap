@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 10:27:14 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/12 16:23:20 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/12 17:14:54 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,8 @@ int		rp_string(char *arg);
 int		repeat(char **argv);
 int		is_valid(char **arg);
 int		check_arg(char **arg);
+void	sa(t_list **stacka);
+void	sb(t_list **stackb);
+
 
 #endif

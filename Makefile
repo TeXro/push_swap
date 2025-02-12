@@ -1,5 +1,5 @@
 CC = cc
-SRC = utils.c ft_int_split.c check.c
+SRC = utils.c ft_int_split.c check.c moves.c
 OBJ = ${SRC:.c=.o}
 CFLAGS =
 NAME = push_swap.a

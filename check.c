@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 18:58:15 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/11 22:29:21 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/12 22:55:54 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,15 @@ int repeat(char **argv)
 	int b = 0;
 
 	while (argv[i])
-	{
+	{	
 		p = i + 1;
 		b = 0;
 		c = 0;
-		//			i      p    
-		//         [0]    [1]          [2] [3] [4] [5] [6]
+		//			i       p    
+		//         [0]     [1]          [2] [3] [4] [5] [6]
 		// 			12     "33  5 12 6 "
-		// 		   --b------------c------------
-		// 		    012    012 0 0 0
+		// 		   ---b-------------c-------
+		// 		    012     012 0 0 0
 		while (argv[p])
 		{
 			if (argv[i][b] != argv[p][c])
@@ -107,7 +107,32 @@ int repeat(char **argv)
 	}
 	return 0;
 }
-int is_valid(char **arg)
+int is_empty(char **argv)
+{
+	int i;
+	int c;
+
+	i = 0;
+	while (argv[i])
+	{
+		c = 0;
+		if (argv[i][c] == '\0')
+			return 1;
+		while (argv[i][c])
+		{
+			if (argv[i][c] != ' ' && argv[i][c] != '\t')
+				break;
+			c++;
+			if (argv[i][c] == '\0')
+				return 1;
+		}
+		i++;
+	}
+	return 0;
+	
+}
+
+int is_num(char **arg)
 {
 	int	i;
 	int	c;
@@ -130,10 +155,14 @@ int is_valid(char **arg)
 	}
 	return 0;
 }
-
+		
 int check_arg(char **arg)
-{	
-	if (is_valid(arg) == 1)
+{
+	if (is_empty(arg) == 1)
+		return 1;
+	if (is_num(arg) == 1)
+		return 1;
+	if (repeat(arg) == 1)
 		return 1;
 	return 0;
 }
