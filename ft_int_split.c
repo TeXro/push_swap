@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 22:27:21 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/12 16:30:43 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/13 14:35:50 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,39 @@ int	intlen(const char *s)
 	return (len);
 }
 
+static int	res(const char *str)
+{
+	int	results;
+
+	results = 0;
+	while (*str >= '0' && *str <= '9')
+	{
+		results = results * 10 + (*str - '0');
+		str++;
+	}
+	return (results);
+}
+
 int	charint(const char *s, int len)
 {
-	int	word;
 	int	i;
+	int	cs;
+	int	pn;
 
-	word = 0;
-	i = 0;
-	while (i < len)
+	pn = 0;
+	cs = 1;
+	while (s[i] == ' ' || (s[i] >= 9 && s[i] <= 13) && (i < len))
+		i++;
+	while (s[i] == '+' || s[i] == '-' && (i < len))
 	{
-		word = word * 10 + (s[i] - '0');
+		pn++;
+		if (pn > 1)
+			return (0);
+		if (s[i] == '-')
+			cs = -1;
 		i++;
 	}
-	return (word);
+	return (res(s + i) * cs);
 }
 
 int	*ft_int_split(char const *s)

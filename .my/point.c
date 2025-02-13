@@ -2,42 +2,41 @@
 #include <stdlib.h>
 #include <string.h>
 
-
-int	count_int(const char *s, char c)
+int	count_num(const char *s)
 {
-	int		count;
-	int		in_word;
+	int	count;
+	int	in_word;
 
 	count = 0;
 	in_word = 0;
 	while (*s)
-	{  
-		if (*s != c && in_word == 0)
+	{
+		if (*s != ' ' && in_word == 0)
 		{
 			in_word = 1;
 			count++;
 		}
-		else if (*s == c)
+		else if (*s == ' ')
 			in_word = 0;
 		s++;
 	}
 	return (count);
 }
 
-int	intlen(const char *s, char c)
+int	intlen(const char *s)
 {
 	int	len;
 
 	len = 0;
-	while (s[len] && s[len] != c)
+	while (s[len] && s[len] != ' ')
 		len++;
 	return (len);
 }
 
-int	allocint(const char *s, int len)
+int	charint(const char *s, int len)
 {
 	int	word;
-	int		i;
+	int	i;
 
 	word = 0;
 	i = 0;
@@ -49,33 +48,38 @@ int	allocint(const char *s, int len)
 	return (word);
 }
 
-int *ft_int_split(char const *s, char c)
+int	*ft_int_split(char const *s)
 {
-	int		result[count_int(s, c)];
-	int		i;
-	int		word_count;
-	int		*rtn;
+	int	*result;
+	int	i;
+	int	numbers;
 
 	if (!s)
 		return (NULL);
-	word_count = count_int(s, c);
 	i = 0;
-	while (i < word_count)
+	numbers = count_num(s);
+	result = malloc(sizeof(int) * (numbers));
+	if (!result)
+		return (NULL);
+	i = 0;
+	while (i < numbers)
 	{
-		while (*s == c)
+		while (*s == ' ')
 			s++;
-		result[i] = allocint(s, intlen(s, c));
-		s += intlen(s, c);
+		result[i] = charint(s, intlen(s));
+		s += intlen(s);
 		i++;
 	}
-	rtn = result;
-	return(rtn);
+	return (result);
 }
+
 
 int main()
 {
 	int *res;
-	res = ft_int_split("1 2", ' ');
+	res = ft_int_split("1 2 0");
+	printf("%d", res[1]);
+	printf("%p", res[1]);
 	
 	
 }
