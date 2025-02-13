@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 18:58:15 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/13 14:23:04 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/13 21:53:38 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,63 +50,6 @@ int rp_string(char *arg)
 	}
 	return 0;
 }
-
-// int repeat(char **argv)
-// {
-// 	int i = 0;
-// 	int p = 0;
-// 	int c = 0;
-// 	int b = 0;
-
-// 	while (argv[i])
-// 	{	
-// 		p = i + 1;
-// 		b = 0;
-// 		c = 0;
-// 		//			i       p    
-// 		//         [0]     [1]          [2] [3] [4] [5] [6]
-// 		// 			12     "33  5 12 6 "
-// 		// 		   ---b-------------c-------
-// 		// 		    012     012 0 0 0
-// 		while (argv[p])
-// 		{
-// 			if (argv[i][b] != argv[p][c])
-// 			{
-// 				if (ft_strchr(argv[i] + b, ' '))
-// 				{
-// 					while ((argv[i][b]) != ' ')
-// 						b++;
-// 					while ((argv[i][b]) == ' ')
-// 						b++;
-// 					continue;
-// 				}
-// 				if (ft_strchr(argv[p] + c, ' '))
-// 				{
-// 					while ((argv[p][c]) != ' ')
-// 						c++;
-// 					while ((argv[p][c]) == ' ')
-// 						c++;
-// 					b = 0;
-// 					continue;
-// 				}
-// 				p++;
-// 				c = 0;
-// 				b = 0;	
-// 				continue;
-// 			}
-// 			if (argv[i][b] == argv[p][c] && (argv[i][b] && argv[p][c]))
-// 			{
-// 				c++;
-// 				b++;
-// 				if (((!argv[i][b] || argv[i][b] == ' ')  && (!argv[p][c] || argv[p][c] == ' ')))
-// 					return 1;
-// 				continue;
-// 			}
-// 		}
-// 		i++;
-// 	}
-// 	return 0;
-// }
 
 int is_empty(char **argv)
 {

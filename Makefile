@@ -5,7 +5,7 @@ CFLAGS =
 NAME = push_swap.a
 
 all : $(NAME)
-	cc fix.c $(NAME) -o push_swap && rm -f $(OBJ) $(NAME)
+	cc main.c $(NAME) -o push_swap && rm -f $(OBJ) $(NAME)
 
 re : fclean all
 
