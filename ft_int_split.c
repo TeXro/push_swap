@@ -6,13 +6,13 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 22:27:21 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/13 21:50:04 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/18 20:36:17 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	count_num(const char *s)
+long	count_num(const char *s)
 {
 	int	count;
 	int	in_word;
@@ -33,9 +33,9 @@ int	count_num(const char *s)
 	return (count);
 }
 
-int	intlen(const char *s)
+size_t	intlen(const char *s)
 {
-	int	len;
+	size_t	len;
 
 	len = 0;
 	while (s[len] && s[len] != ' ')
@@ -43,9 +43,9 @@ int	intlen(const char *s)
 	return (len);
 }
 
-static int	res(const char *str)
+long	res(const char *str)
 {
-	int	results;
+	long	results;
 
 	results = 0;
 	while (*str >= '0' && *str <= '9')
@@ -56,7 +56,7 @@ static int	res(const char *str)
 	return (results);
 }
 
-int	charint(const char *s, int len)
+long	charint(const char *s, size_t len)
 {
 	int	i;
 	int	cs;
@@ -64,6 +64,7 @@ int	charint(const char *s, int len)
 
 	pn = 0;
 	cs = 1;
+	i = 0;
 	while (s[i] == ' ' || (s[i] >= 9 && s[i] <= 13) && (i < len))
 		i++;
 	while (s[i] == '+' || s[i] == '-' && (i < len))
@@ -78,17 +79,19 @@ int	charint(const char *s, int len)
 	return (res(s + i) * cs);
 }
 
-int	*ft_int_split(char const *s)
+is_max()
+
+long	*ft_int_split(char const *s)
 {
-	int	*result;
+	long	*result;
 	int	i;
-	int	numbers;
+	long	numbers;
 
 	if (!s)
 		return (NULL);
 	i = 0;
 	numbers = count_num(s);
-	result = malloc(sizeof(int) * (numbers));
+	result = malloc(sizeof(long) * (numbers));
 	if (!result)
 		return (NULL);
 	i = 0;
@@ -96,6 +99,7 @@ int	*ft_int_split(char const *s)
 	{
 		while (*s == ' ')
 			s++;
+		if (condition)
 		result[i] = charint(s, intlen(s));
 		s += intlen(s);
 		i++;
