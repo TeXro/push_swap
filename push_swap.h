@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 10:27:14 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/18 18:53:34 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/19 15:57:17 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 typedef struct t_list
 {
-	long				data;
+	long			data;
 	struct t_list	*next;
 }	t_list;
 size_t	ft_strlen(const char *s);

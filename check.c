@@ -6,50 +6,11 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 18:58:15 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/13 21:53:38 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/19 15:55:47 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int rp_string(char *arg)
-{
-	int c = 0;
-	int b = 0;
-
-	while (arg[c])
-	{
-		printf("(c%d)\n", c);
-		b = c + 1;
-		while (arg[b])
-		{
-			if (arg[c] != arg[b])
-			{
-				printf("b1> %d c> %d\n", b, c);
-				while (arg[b] != ' ' && arg[b])
-				{
-					b++;
-					printf("b2> %d c> %d\n", b, c);
-				}
-				while (arg[b] == ' ')
-					b++;
-				printf("b3> %d c> %d\n", b, c);
-				continue;
-			}
-			if (arg[c] == arg[b] && (arg[c] && arg[b]))
-			{
-				printf("Mb1> %d c> %d\n", b, c);
-				c++;
-				b++;
-				if (((!arg[b] || arg[b] == ' ')  && (!arg[c] || arg[c] == ' ')))
-					return 1;
-				continue;
-			}
-		}
-		c++;
-	}
-	return 0;
-}
 
 int is_empty(char **argv)
 {
