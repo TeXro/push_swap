@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 22:34:05 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/19 15:56:58 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/19 23:03:41 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int	nums(const char *s)
 	return (count);
 }
 
-
 int	handle_arg(char **arg, t_list **stack)
 {
 	int		i;
@@ -77,12 +76,11 @@ int	handle_arg(char **arg, t_list **stack)
 	i = 0;
 	while (arg[i])
 	{
-		lim = nums(arg[i]);
 		sp_arg = ft_int_split(arg[i]);
 		a = 0;
 		if (sp_arg == NULL)
 			return (1);
-		while (a < lim)
+		while (sp_arg[a] != 9999999999)
 		{
 			new_node(stack, sp_arg[a]);
 			a++;
@@ -105,7 +103,11 @@ int	main(int argc, char **argv)
 	if (check_arg(argv))
 		return (ft_error());
 	if(handle_arg(argv, &stacka) == 1)
+	{
+		if (stacka)
+			free_list(stacka);
 		return (ft_error());
+	}
 	currenta = stacka;
 	while (currenta)
 	{

@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 22:27:21 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/19 16:07:50 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/19 22:54:42 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ long	*ft_int_split(char const *s)
 		return (NULL);
 	i = 0;
 	numbers = count_num(s);
-	result = malloc(sizeof(long) * (numbers));
+	result = malloc(sizeof(long) * (numbers + 1));
 	if (!result)
 		return (NULL);
 	i = 0;
@@ -142,10 +142,11 @@ long	*ft_int_split(char const *s)
 		while (*s == ' ')
 			s++;
 		if(is_max(s) == 1)
-			return NULL;
+			return (free(result) ,NULL);
 		result[i] = charint(s, intlen(s));
 		s += intlen(s);
 		i++;
 	}
+	result[i] = 9999999999;
 	return (result);
 }
