@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 18:58:15 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/19 15:55:47 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/19 17:27:46 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,20 @@ int is_num(char **arg)
 		c = 0;
 		while (arg[i][c])
 		{
-			if (arg[i][c + 1] == '+' || arg[i][c + 1] == '-') 
-				return 1;
-			if ((arg[i][c] != '+') && (arg[i][c] != '-')){
-				if((arg[i][c] < '0' || arg[i][c] > '9') && (arg[i][c] != ' '))
-					return 1;
+			if (arg[i][c] == '+' || arg[i][c] == '-')
+			{
+				c++;
+				if (!(arg[i][c] >= '0' && arg[i][c] <= '9'))
+					return (1);
+				continue;
 			}
+			if (!(arg[i][c] >= '0' && arg[i][c] <= '9') && arg[i][c] != ' ')
+				return (1);
 			c++;
 		}
 		i++;
 	}
-	return 0;
+	return (0);
 }
 // int is_double
 		
