@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 22:34:05 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/20 06:38:42 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/20 07:29:22 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,12 @@ int	handle_arg(char **arg, t_list **stack)
 	long 	*join;
 
 	i = 0;
+	join = NULL;
 	while (arg[i])
 	{
 		sp_arg = ft_int_split(arg[i]);
 		if (sp_arg == NULL)
-			return (1);
+			return (free(join), 1);
 		join = is_double(sp_arg);
 		if (!join)
 			return (free(join), 1);
@@ -113,8 +114,7 @@ int	handle_arg(char **arg, t_list **stack)
 		free(sp_arg);
 		i++;
 	}
-	free(join);
-	return (0);
+	return (free(join), 0);
 }
 
 int	main(int argc, char **argv)
