@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 22:34:05 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/20 03:32:04 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/20 05:22:01 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,32 @@ int	nums(const char *s)
 	return (count);
 }
 
-int is_double(int *arr)
+void is_double(long *arr)
 {
-	ft_long_join();
+	static long *joined;
+	int i = 0;
+	if (!joined)
+	{
+		joined = ft_long_join(NULL, arr);
+		printf("N-->\n");
+	while (joined[i] != 9999999999)
+	{
+		printf(">%ld\n", joined[i]);
+		i++;
+	}
+	printf("<--Nend\n\n");
+		return ;
+	}
+	i = 0;
+	joined = ft_long_join(joined, arr);
+	printf("join-->\n");
+	while (joined[i] != 9999999999)
+	{
+		printf(">%ld\n", joined[i]);
+		i++;
+	}
+	printf("<--end\n\n");
+
 }
 
 int	handle_arg(char **arg, t_list **stack)
@@ -82,11 +105,12 @@ int	handle_arg(char **arg, t_list **stack)
 	while (arg[i])
 	{
 		sp_arg = ft_int_split(arg[i]);
-		if (is_double(sp_arg) == 1)
-			return 1;		
 		a = 0;
 		if (sp_arg == NULL)
 			return (1);
+		is_double(sp_arg);
+		// if (is_double(sp_arg) == 1)
+		// 	return 1;		
 		while (sp_arg[a] != 9999999999)
 		{
 			new_node(stack, sp_arg[a]);

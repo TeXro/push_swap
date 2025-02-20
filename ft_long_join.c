@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 02:55:26 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/20 04:12:24 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/20 04:28:52 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,5 @@ long *ft_long_join(long *nums1, long *nums2)
 	while (l2)
 		res[i++] = nums2[--l2];
 	res[i] = 9999999999;
-	return (free(nums1), free(nums2), res);
+	return (free(nums1), res);
 }
