@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 10:27:14 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/20 03:02:57 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/20 08:05:02 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,15 @@ int		is_num(char **arg);
 int		check_arg(char **arg);
 void	sa(t_list **stacka);
 void	sb(t_list **stackb);
+void	ss(t_list **stacka, t_list **stackb);
+void	pa(t_list **stacka, t_list **stackb);
+void	pb(t_list **stacka, t_list **stackb);
+void	ra(t_list **stacka);
+void	rb(t_list **stackb);
+void	rr(t_list **stacka, t_list **stackb);
+void	rra(t_list **stacka);
+void	rrb(t_list **stackb);
+void	rrr(t_list **stacka, t_list **stackb);
 long	*ft_long_join(long *nums1, long *nums2);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 22:34:05 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/20 07:29:22 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/20 21:39:58 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ long *is_double(long *arr)
 		while (joined[a] != 9999999999)
 		{
 			if (joined[i] == joined[a])
-				return (free(joined), free(arr), 	NULL);
+				return (free(joined), free(arr), NULL);
 			a++;
 		}
 		i++;
@@ -143,37 +143,3 @@ int	main(int argc, char **argv)
 	free_list(stacka);
 	return 0;
 }
-// int	main(int argc, char **argv)
-// {
-// 	t_list	*stacka;
-// 	t_list	*stackb;
-// 	t_list	*currenta;
-// 	t_list	*currentb;
-
-// 	if (argc == 1)
-// 		return (0);
-// 	argv += 1;
-// 	stacka = NULL;
-// 	stackb = NULL;
-// 	if (check_arg(argv) == 1)
-// 		return (ft_error());
-// 	handle_arg(argv, &stacka);
-// 	handle_arg(argv, &stackb);
-// 	currenta = stacka;
-// 	currentb = stackb;
-// 	printf("<A>\t<B>\n");
-// 	while (currenta || currentb)
-// 	{
-// 		if (currenta)
-// 		{
-// 			printf("[%d]\t", currenta->data);
-// 			currenta = currenta->next;
-// 		}
-// 		if (currentb)
-// 		{
-// 			printf("[%d]\t", currentb->data);
-// 			currentb = currentb->next;
-// 		}
-// 		printf("\n");
-// 	}
-// }
