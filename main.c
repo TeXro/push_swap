@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 22:34:05 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/20 05:22:01 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/20 06:25:45 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,59 +66,54 @@ int	nums(const char *s)
 	return (count);
 }
 
-void is_double(long *arr)
+long *is_double(long *arr)
 {
 	static long *joined;
-	int i = 0;
-	if (!joined)
-	{
-		joined = ft_long_join(NULL, arr);
-		printf("N-->\n");
-	while (joined[i] != 9999999999)
-	{
-		printf(">%ld\n", joined[i]);
-		i++;
-	}
-	printf("<--Nend\n\n");
-		return ;
-	}
-	i = 0;
-	joined = ft_long_join(joined, arr);
-	printf("join-->\n");
-	while (joined[i] != 9999999999)
-	{
-		printf(">%ld\n", joined[i]);
-		i++;
-	}
-	printf("<--end\n\n");
+	int i;
+	int a;
 
+	i = 0;
+	if (!joined)
+		joined = ft_long_join(NULL, arr);
+	else
+		joined = ft_long_join(joined, arr);
+	while (joined[i] != 9999999999)
+	{
+		a = i + 1;
+		while (joined[a] != 9999999999)
+		{
+			if (joined[i] == joined[a])
+				return NULL;
+			a++;
+		}
+		i++;
+	}
+	return arr;
 }
 
 int	handle_arg(char **arg, t_list **stack)
 {
 	int		i;
 	int		a;
-	int		lim;
 	long	*sp_arg;
+	long 	*join;
 
 	i = 0;
 	while (arg[i])
 	{
 		sp_arg = ft_int_split(arg[i]);
-		a = 0;
 		if (sp_arg == NULL)
 			return (1);
-		is_double(sp_arg);
-		// if (is_double(sp_arg) == 1)
-		// 	return 1;		
+		join = is_double(sp_arg);
+		if (!join)
+			return (free(sp_arg), free(join), 1);
+		a = 0;
 		while (sp_arg[a] != 9999999999)
-		{
-			new_node(stack, sp_arg[a]);
-			a++;
-		}
+			new_node(stack, sp_arg[a++]);
 		free(sp_arg);
 		i++;
 	}
+	// free(join);
 	return (0);
 }
 

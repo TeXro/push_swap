@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 02:55:26 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/20 04:28:52 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/20 06:30:49 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ long *ft_long_join(long *nums1, long *nums2)
 	res = malloc(sizeof(long) * (l1 + l2 + 1));
 	while (l1)
 		res[i++] = nums1[--l1];
+	free(nums1);
 	while (l2)
 		res[i++] = nums2[--l2];
 	res[i] = 9999999999;
-	return (free(nums1), res);
+	return (res);
 }
