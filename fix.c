@@ -6,33 +6,25 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 21:36:41 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/19 22:09:16 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/20 04:10:11 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-
-long *ft_longjoin(long *nums1, long *nums2)
-{
-	long *res;
-	
-	res = malloc(sizeof(int));
-}
-
 int main()
 {
-	long *arr = ft_int_split("91 92 93");
-	// printf("%ld\n", arr[0]);
-	// printf("%ld\n", arr[1]);
-	// printf("%ld\n", arr[2]);
+	long *arr = ft_int_split("99");
+	long *jr = ft_int_split("66 77");
 	int i = 0;
+
+	arr = ft_long_join(arr, jr);
 	while (arr[i] != 9999999999)
 	{
-		printf("%ld\n", arr[i]);
+		printf(">%ld\n", arr[i]);
 		i++;
 	}
-	
 	free(arr);
+	
+	
 }

@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 22:34:05 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/19 23:03:41 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/20 03:32:04 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,11 @@ int	nums(const char *s)
 	return (count);
 }
 
+int is_double(int *arr)
+{
+	ft_long_join();
+}
+
 int	handle_arg(char **arg, t_list **stack)
 {
 	int		i;
@@ -77,6 +82,8 @@ int	handle_arg(char **arg, t_list **stack)
 	while (arg[i])
 	{
 		sp_arg = ft_int_split(arg[i]);
+		if (is_double(sp_arg) == 1)
+			return 1;		
 		a = 0;
 		if (sp_arg == NULL)
 			return (1);
