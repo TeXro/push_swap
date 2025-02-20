@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 22:34:05 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/20 06:25:45 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/20 06:38:42 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,12 @@ long *is_double(long *arr)
 		while (joined[a] != 9999999999)
 		{
 			if (joined[i] == joined[a])
-				return NULL;
+				return (free(joined), free(arr), 	NULL);
 			a++;
 		}
 		i++;
 	}
-	return arr;
+	return joined;
 }
 
 int	handle_arg(char **arg, t_list **stack)
@@ -106,14 +106,14 @@ int	handle_arg(char **arg, t_list **stack)
 			return (1);
 		join = is_double(sp_arg);
 		if (!join)
-			return (free(sp_arg), free(join), 1);
+			return (free(join), 1);
 		a = 0;
 		while (sp_arg[a] != 9999999999)
 			new_node(stack, sp_arg[a++]);
 		free(sp_arg);
 		i++;
 	}
-	// free(join);
+	free(join);
 	return (0);
 }
 
