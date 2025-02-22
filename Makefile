@@ -1,7 +1,7 @@
 CC = cc
 SRC = utils.c ft_int_split.c check.c ft_long_join.c \
-	  moves_ps.c moves_r.c moves_rr.c
-OBJ = ${SRC:.c=.o}	
+	  moves_ps.c moves_r.c moves_rr.c sort.c
+OBJ = ${SRC:.c=.o}
 CFLAGS =
 NAME = push_swap.a
 

@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 22:34:05 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/20 21:39:58 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/22 05:18:27 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,27 +119,64 @@ int	handle_arg(char **arg, t_list **stack)
 
 int	main(int argc, char **argv)
 {
-	t_list	*stacka;
+	t_list	*stack_a;
+	t_list	*stackb;
 	t_list	*currenta;
+	t_list	*currentb;
 
 	if (argc == 1)
 		return (0);
 	argv += 1;
-	stacka = NULL;
+	stack_a = NULL;
+	stackb = NULL;
 	if (check_arg(argv))
 		return (ft_error());
-	if(handle_arg(argv, &stacka) == 1)
+	if(handle_arg(argv, &stack_a) == 1)
 	{
-		if (stacka)
-			free_list(stacka);
+		if (stack_a)
+			free_list(stack_a);
 		return (ft_error());
 	}
-	currenta = stacka;
-	while (currenta)
+	currenta = stack_a;
+	currentb = stackb;
+	printf("<A>\t<B>\n");
+	while (currenta || currentb)
 	{
-		printf("[%ld]\n", currenta->data);
-		currenta = currenta->next;
+		if (currenta)
+		{
+			printf("[%ld]\t", currenta->data);
+			currenta = currenta->next;
+		}
+		if (currentb)
+		{
+			printf("[%ld]", currentb->data);
+			currentb = currentb->next;
+		}
+		printf("\n");
 	}
-	free_list(stacka);
+	printf("op-------->\n");
+//op>>>>>>>>>>>>>>>>>>>
+
+	s_sort(&stack_a, &stackb);
+	currenta = stack_a;
+	currentb = stackb;
+	printf("<A>\t<B>\n");
+	while (currenta || currentb)
+	{
+		if (currenta)
+		{
+			printf("[%ld]\t", currenta->data);
+			currenta = currenta->next;
+		}
+		if (currentb)
+		{
+			printf("[%ld]", currentb->data);
+			currentb = currentb->next;
+		}
+		printf("\n");
+	}
+	free_list(stack_a);
+	// free_list(stackb);
 	return 0;
 }
+
