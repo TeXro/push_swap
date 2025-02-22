@@ -6,25 +6,25 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 02:55:26 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/20 06:32:17 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/22 07:14:13 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-size_t long_nums(long *num)
+size_t	long_nums(long *num)
 {
-	size_t len;
+	size_t	len;
 
 	len = 0;
 	if (num == NULL)
-		return len;
+		return (len);
 	while (num[len] != 9999999999)
 		len++;
-	return len;
+	return (len);
 }
 
-long *ft_long_join(long *nums1, long *nums2)
+long	*ft_long_join(long *nums1, long *nums2)
 {
 	long	*res;
 	size_t	l1;

@@ -6,21 +6,21 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 04:15:35 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/22 05:53:27 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/22 06:23:06 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	three_sort(t_stack **stack_a)
+void	three_sort(t_list **stack_a)
 {
 	int	a;
 	int	b;
 	int	c;
 
-	a = (*stack_a)->num;
-	b = (*stack_a)->next->num;
-	c = (*stack_a)->next->next->num;
+	a = (*stack_a)->data;
+	b = (*stack_a)->next->data;
+	c = (*stack_a)->next->next->data;
 	if (a > c && b < c)
 		ra(stack_a);
 	else if (a > c && a > b && b > c)
@@ -39,7 +39,7 @@ void	three_sort(t_stack **stack_a)
 		sa(stack_a);
 }
 
-void	push_help(t_stack **stack_a, t_stack **stack_b, int pos)
+void	push_help(t_list **stack_a, t_list **stack_b, int pos)
 {
 	int	len;
 
@@ -59,22 +59,22 @@ void	push_help(t_stack **stack_a, t_stack **stack_b, int pos)
 	pb(stack_a, stack_b);
 }
 
-void	push_s_t_b(t_stack **stack_a, t_stack **stack_b)
+void	push_s_t_b(t_list **stack_a, t_list **stack_b)
 {
 	int		min;
-	t_stack	*tmp;
+	t_list	*tmp;
 	int		pos;
 	int		i;
 
 	i = 1;
 	tmp = *stack_a;
-	min = (*stack_a)->num;
+	min = (*stack_a)->data;
 	pos = 0;
 	while (tmp && tmp->next)
 	{
-		if (min > tmp->next->num)
+		if (min > tmp->next->data)
 		{
-			min = tmp->next->num;
+			min = tmp->next->data;
 			pos = i;
 		}
 		tmp = tmp->next;
@@ -83,14 +83,14 @@ void	push_s_t_b(t_stack **stack_a, t_stack **stack_b)
 	push_help(stack_a, stack_b, pos);
 }
 
-void	small_sort(t_stack **stack_a, int len)
+void	small_sort(t_list **stack_a, int len)
 {
-	t_stack	*stack_b;
+	t_list	*stack_b;
 
 	stack_b = NULL;
 	if (len == 2)
 	{
-		if ((*stack_a)->num > (*stack_a)->next->num)
+		if ((*stack_a)->data > (*stack_a)->next->data)
 			sa(stack_a);
 	}
 	else if (len == 3)
@@ -110,9 +110,9 @@ void	small_sort(t_stack **stack_a, int len)
 	}
 }
 
-void	sort_stack(t_stack **stack_a, int len)
+void	sort_stack(t_list **stack_a, int len)
 {
-	t_stack	*stack_b;
+	t_list	*stack_b;
 
 	stack_b = NULL;
 	if (len == 1)

@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 22:21:16 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/13 12:24:29 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/22 06:33:55 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,29 +38,23 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char	*ft_memcpy(char *dst, char *src, size_t n)
+void	fill_arr(t_list **stack_a, int *arr)
 {
-	char		*d;
-	const char	*s;
-	size_t		i;
+	t_list	*temp;
+	int		i;
 
-	s = (const char *)src;
-	d = (char *)dst;
-	if (!s && !d)
-		return (NULL);
+	temp = *stack_a;
 	i = 0;
-	while (i < n)
+	while (temp)
 	{
-		d[i] = s[i];
+		arr[i] = temp->data;
+		temp = temp->next;
 		i++;
 	}
-	dst[i] = '\0';
-	return (dst);
 }
 
 int	ft_error(void)
 {
-	write(2, "Error", 5);
-	write(2, "\n", 1);
+	write(2, "Error\n", 6);
 	return (1);
 }

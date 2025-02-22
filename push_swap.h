@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 10:27:14 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/22 05:34:09 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/22 08:10:53 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,14 @@ void	rra(t_list **stack_a);
 void	rrb(t_list **stack_b);
 void	rrr(t_list **stack_a, t_list **stack_b);
 long	*ft_long_join(long *nums1, long *nums2);
-void	s_sort(t_list **stack_a, t_list **stack_b);
+void	big_sort(t_list **stk_a, t_list **stk_b, int size);
+int		sorted_check(t_list **stack_a);
+int		len_stack(t_list **stack_a);
+void	sort_in_table(int *table, int len);
+void	fill_arr(t_list **stack_a, int *arr);
+void	sort_stack(t_list **stack_a, int len);
+size_t	intlen(const char *s);
+int		is_max(char const *s);
+int		is_max_n(char const *s);
 
 #endif

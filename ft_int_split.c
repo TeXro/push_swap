@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 22:27:21 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/22 06:10:15 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/22 07:25:22 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ long	res(const char *str)
 long	charint(const char *s, size_t len)
 {
 	size_t	i;
-	int	cs;
-	int	pn;
+	int		cs;
+	int		pn;
 
 	pn = 0;
 	cs = 1;
@@ -77,50 +77,6 @@ long	charint(const char *s, size_t len)
 		i++;
 	}
 	return (res(s + i) * cs);
-}
-
-int is_max_n(char const *s)
-{
-	size_t	len;
-	int		last_dg;
-
-	while (*s == '0')
-	{
-		s++;
-	}
-	len = intlen(s);
-	if(len > 10)
-		return 1;
-	if (len == 10)
-	{
-		last_dg = s[len - 1] - '0';
-		if (last_dg > 8)
-			return 1;
-	}
-	return 0;
-}
-
-int	is_max(char const *s)
-{
-	size_t	len;
-	int		last_dg;
-
-	if (*s == '-' || *s == '+')
-		return is_max_n(++s);
-	while (*s == '0')
-	{
-		s++;
-	}
-	len = intlen(s);
-	if(len > 10)
-		return 1;
-	if (len == 10)
-	{
-		last_dg = s[len - 1] - '0';
-		if (last_dg > 7)
-			return 1;
-	}
-	return 0;
 }
 
 long	*ft_int_split(char const *s)
@@ -141,8 +97,8 @@ long	*ft_int_split(char const *s)
 	{
 		while (*s == ' ')
 			s++;
-		if(is_max(s) == 1)
-			return (free(result) ,NULL);
+		if (is_max(s) == 1)
+			return (free (result), NULL);
 		result[i] = charint(s, intlen(s));
 		s += intlen(s);
 		i++;

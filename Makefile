@@ -1,5 +1,7 @@
 CC = cc
-SRC = push_swap.c ft_stack.c utils.c ft_int_split.c check.c ft_long_join.c \
+SRC = push_swap.c sort.c big_sort.c ft_stack.c is_max.c\
+	  utils.c ft_int_split.c check.c \
+	  ft_long_join.c\
 	  moves_ps.c moves_r.c moves_rr.c
 OBJ = ${SRC:.c=.o}
 CFLAGS = -g -Wall -Wextra -Werror
