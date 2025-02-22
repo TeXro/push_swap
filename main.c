@@ -6,44 +6,11 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 22:34:05 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/22 05:18:27 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/22 05:34:09 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	new_node(t_list **stack, long num)
-{
-	t_list	*tmp;
-	t_list	*node;
-
-	node = (t_list *)malloc(sizeof(t_list));
-	if (!node)
-		return ;
-	node->data = num;
-	node->next = NULL;
-	if (*stack == NULL)
-	{
-		*stack = node;
-		return ;
-	}
-	tmp = *stack;
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = node;
-}
-
-void	free_list(t_list *head)
-{
-	t_list	*tmp;
-
-	while (head != NULL)
-	{
-		tmp = head;
-		head = head->next;
-		free(tmp);
-	}
-}
 
 int	nums(const char *s)
 {
@@ -120,7 +87,7 @@ int	handle_arg(char **arg, t_list **stack)
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
-	t_list	*stackb;
+	t_list	*stack_b;
 	t_list	*currenta;
 	t_list	*currentb;
 
@@ -128,7 +95,7 @@ int	main(int argc, char **argv)
 		return (0);
 	argv += 1;
 	stack_a = NULL;
-	stackb = NULL;
+	stack_b = NULL;
 	if (check_arg(argv))
 		return (ft_error());
 	if(handle_arg(argv, &stack_a) == 1)
@@ -138,7 +105,7 @@ int	main(int argc, char **argv)
 		return (ft_error());
 	}
 	currenta = stack_a;
-	currentb = stackb;
+	currentb = stack_b;
 	printf("<A>\t<B>\n");
 	while (currenta || currentb)
 	{
@@ -157,9 +124,9 @@ int	main(int argc, char **argv)
 	printf("op-------->\n");
 //op>>>>>>>>>>>>>>>>>>>
 
-	s_sort(&stack_a, &stackb);
+	s_sort(&stack_a, &stack_b);
 	currenta = stack_a;
-	currentb = stackb;
+	currentb = stack_b;
 	printf("<A>\t<B>\n");
 	while (currenta || currentb)
 	{
@@ -176,7 +143,7 @@ int	main(int argc, char **argv)
 		printf("\n");
 	}
 	free_list(stack_a);
-	// free_list(stackb);
+	// free_list(stack_b);
 	return 0;
 }
 

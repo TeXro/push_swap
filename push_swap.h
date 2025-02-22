@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 10:27:14 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/22 05:18:27 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/22 05:34:09 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct t_list
 	long			data;
 	struct t_list	*next;
 }	t_list;
+void	new_node(t_list **stack, long num);
+void	free_list(t_list *head);
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 long	*ft_int_split(char const *s);
@@ -34,17 +36,17 @@ int		ft_error(void);
 int		is_num(char **arg);
 int		check_arg(char **arg);
 void	sa(t_list **stack_a);
-void	sb(t_list **stackb);
-void	ss(t_list **stack_a, t_list **stackb);
-void	pa(t_list **stack_a, t_list **stackb);
-void	pb(t_list **stack_a, t_list **stackb);
+void	sb(t_list **stack_b);
+void	ss(t_list **stack_a, t_list **stack_b);
+void	pa(t_list **stack_a, t_list **stack_b);
+void	pb(t_list **stack_a, t_list **stack_b);
 void	ra(t_list **stack_a);
-void	rb(t_list **stackb);
-void	rr(t_list **stack_a, t_list **stackb);
+void	rb(t_list **stack_b);
+void	rr(t_list **stack_a, t_list **stack_b);
 void	rra(t_list **stack_a);
-void	rrb(t_list **stackb);
-void	rrr(t_list **stack_a, t_list **stackb);
+void	rrb(t_list **stack_b);
+void	rrr(t_list **stack_a, t_list **stack_b);
 long	*ft_long_join(long *nums1, long *nums2);
-void	s_sort(t_list **stack_a, t_list **stackb);
+void	s_sort(t_list **stack_a, t_list **stack_b);
 
 #endif
