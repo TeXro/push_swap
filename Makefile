@@ -1,25 +1,22 @@
 CC = cc
-SRC = ft_stack.c utils.c ft_int_split.c check.c ft_long_join.c \
-	  moves_ps.c moves_r.c moves_rr.c sort.c
+SRC = push_swap.c ft_stack.c utils.c ft_int_split.c check.c ft_long_join.c \
+	  moves_ps.c moves_r.c moves_rr.c
 OBJ = ${SRC:.c=.o}
-CFLAGS =
-NAME = push_swap.a
+CFLAGS = -g -Wall -Wextra -Werror
+NAME = push_swap
 
 all : $(NAME)
-	cc main.c $(NAME) -o push_swap && rm -f $(OBJ) $(NAME)
 
-re : fclean all
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-$(NAME) : $(OBJ)
-	ar rcs $(NAME) $(OBJ)
-
-%.o : %.c
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-clean :
+clean : 
 	rm -f $(OBJ)
 
 fclean : clean
-	rm -f $(NAME) push_swap
+	rm -f $(NAME)
 
-.PHONY: all re clean fclean
+re : fclean all

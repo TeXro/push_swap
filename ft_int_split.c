@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 22:27:21 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/20 21:47:55 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/22 06:10:15 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,16 @@ long	res(const char *str)
 
 long	charint(const char *s, size_t len)
 {
-	int	i;
+	size_t	i;
 	int	cs;
 	int	pn;
 
 	pn = 0;
 	cs = 1;
 	i = 0;
-	while (s[i] == ' ' || (s[i] >= 9 && s[i] <= 13) && (i < len))
+	while (s[i] == ' ' || ((s[i] >= 9 && s[i] <= 13) && (i < len)))
 		i++;
-	while (s[i] == '+' || s[i] == '-' && (i < len))
+	while (s[i] == '+' || (s[i] == '-' && (i < len)))
 	{
 		pn++;
 		if (pn > 1)
