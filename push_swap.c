@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 22:34:05 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/22 07:20:59 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/22 08:40:52 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int	handle_arg(char **arg, t_list **stack)
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
+	int		len;
 
 	if (argc == 1)
 		return (0);
@@ -99,6 +100,11 @@ int	main(int argc, char **argv)
 		if (stack_a)
 			free_list(stack_a);
 		return (ft_error());
+	}
+	if (sorted_check(&stack_a))
+	{
+		len = len_stack(&stack_a);
+		sort_stack(&stack_a, len);
 	}
 	free_list(stack_a);
 	return (0);

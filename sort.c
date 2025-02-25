@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 04:15:35 by zzin              #+#    #+#             */
-/*   Updated: 2025/02/22 06:23:06 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/24 18:06:52 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	push_s_t_b(t_list **stack_a, t_list **stack_b)
 		tmp = tmp->next;
 		i++;
 	}
+	printf("(pos=%d)(i=%d)\n", pos, i);
 	push_help(stack_a, stack_b, pos);
 }
 
@@ -110,15 +111,54 @@ void	small_sort(t_list **stack_a, int len)
 	}
 }
 
+void one_move(t_list **stack_a)
+{
+
+}
+
+int require_one(t_list **stack_a)
+{
+	t_list	*tmp;
+
+	tmp = *stack_a;
+	tmp = tmp->next;
+	while (tmp && tmp->next)
+	{
+		if (tmp->data > tmp->next->data)
+			return 1;
+		tmp = tmp->next;
+	}
+	printf("req");
+	return 0;
+}
+
 void	sort_stack(t_list **stack_a, int len)
 {
 	t_list	*stack_b;
+	t_list	*curr;
 
 	stack_b = NULL;
+	curr = *stack_a;
+
+	while (curr)
+	{
+		printf("->%ld\n", curr->data);
+		curr = curr->next;
+	}
+	printf("op=====>\n");
 	if (len == 1)
 		return ;
 	if (len <= 5)
 		small_sort(stack_a, len);
+	else if(!require_one(stack_a))
+		sa(stack_a);
 	else if (len > 5)
 		big_sort(stack_a, &stack_b, len);
+	curr = *stack_a;
+	while (curr)
+	{
+		printf("->%ld\n", curr->data);
+		curr = curr->next;
+	}
+	
 }

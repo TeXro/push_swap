@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:44:14 by abifkirn          #+#    #+#             */
-/*   Updated: 2025/02/22 06:45:34 by zzin             ###   ########.fr       */
+/*   Updated: 2025/02/25 06:35:41 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	find_max(t_list **stack_b)
 		temp = temp->next;
 		i++;
 	}
-	printf("\nMAX=%d\n", max_index);
 	return (max_index);
 }
 
@@ -56,6 +55,7 @@ void	push_to_b(t_list **stk_a, t_list **stk_b, int *arr, int arr_end)
 	{
 		if ((*stk_a)->data <= arr[arr_start])
 		{
+			printf("if>%ld @ %d?%d\n", (*stk_a)->data, arr[arr_start] , arr[arr_end]);
 			pb(stk_a, stk_b);
 			if ((*stk_b)->next)
 				rb(stk_b);
@@ -63,13 +63,16 @@ void	push_to_b(t_list **stk_a, t_list **stk_b, int *arr, int arr_end)
 		}
 		else if ((*stk_a)->data <= arr[arr_end])
 		{
+			printf("ei>%ld @ %d?%d\n", (*stk_a)->data, arr[arr_start] , arr[arr_end]);
 			pb(stk_a, stk_b);
 			update_index(&arr_start, &arr_end, size);
 			if ((*stk_b)->next && (*stk_b)->data < (*stk_b)->next->data)
 				sb(stk_b);
 		}
-		else
+		else{
+			printf("el%ld @ %d?%d\n", (*stk_a)->data, arr[arr_start] , arr[arr_end]);
 			ra(stk_a);
+		}
 	}
 }
 
@@ -81,7 +84,9 @@ void	push_back_a(t_list **stk_a, t_list **stk_b)
 	while (*stk_b != NULL)
 	{
 		max = find_max(stk_b);
+		printf("(max=%d)\n", max);
 		len = len_stack(stk_b);
+		printf("(len=%d)\n", len / 2);
 		if (max == 0)
 			pa(stk_a, stk_b);
 		else if (max <= len / 2)
@@ -101,17 +106,34 @@ void	big_sort(t_list **stk_a, t_list **stk_b, int size)
 {
 	int	arr_end;
 	int	*arr;
-
+	int i = 0;
 	arr = malloc(sizeof(int) * size);
 	if (!arr)
 		return ;
 	fill_arr(stk_a, arr);
+	while (i < size)
+	{
+		printf("arr[%d]\n", arr[i]);
+		i++;
+	}
 	sort_in_table(arr, size);
+	printf("------->\n");
+	i = 0;
+	while (i < size)
+	{
+		printf("arr[%d]\n", arr[i]);
+		i++;
+	}
+	printf("------->\n");
 	if (size <= 100)
 		arr_end = size / 6;
 	else
 		arr_end = size / 14;
+	printf("(arr_end=%d)\n", arr_end);
 	push_to_b(stk_a, stk_b, arr, arr_end);
+	printf("------->\n");
 	free(arr);
 	push_back_a(stk_a, stk_b);
+	printf("------->\n");
+
 }
